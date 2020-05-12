@@ -47,7 +47,7 @@ title = "此題目包的名稱"
 
 5. 修改題目包名稱，並依照照片的檔名數字填入正確答案
 6. 資料夾現在應該長這樣
-![folder](https://i.imgur.com/Aukj7pF.png)
+![folder](https://i.imgur.com/QIZX1uC.png)
 
 <br/>
 

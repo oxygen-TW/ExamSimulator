@@ -38,7 +38,7 @@ class QuestionController():
             self.current -= 1
 
     def getImage(self):
-        return "{0}/image{1}_c.jpg".format(self.dir,str(self.current))
+        return "{0}/{1}.jpg".format(self.dir,str(self.current))
     
     def getTitle(self):
         return self.title
