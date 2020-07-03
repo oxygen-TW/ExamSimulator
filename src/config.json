@@ -1,0 +1,13 @@
+{
+    "LastDir": "Parasitology-snail",
+    "QuestionRoot": "Questions\\",
+    "id": "0770012",
+    "server": "http://127.0.0.1:5000",
+    "debug": 10,
+    "LastOption": "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u8dd1\u53f0--\u8778\u725b\u985e",
+    "questions": {
+        "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u4e2d\u8dd1\u53f0": "Parasitology-mid",
+        "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u672b\u8dd1\u53f0": "Parasitology-final",
+        "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u8dd1\u53f0--\u8778\u725b\u985e": "Parasitology-snail"
+    }
+}
