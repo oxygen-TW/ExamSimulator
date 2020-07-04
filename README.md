@@ -18,6 +18,8 @@ verify_ssl = true
 Pillow = "*"
 PyInstaller = "*"
 toml = "*"
+pycryptodome = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
@@ -47,7 +49,7 @@ title = "此題目包的名稱"
 
 5. 修改題目包名稱，並依照照片的檔名數字填入正確答案
 6. 資料夾現在應該長這樣
-![folder](https://i.imgur.com/Aukj7pF.png)
+![folder](https://i.imgur.com/QIZX1uC.png)
 
 <br/>
 
@@ -56,5 +58,9 @@ title = "此題目包的名稱"
 
 8. 完成！
 
+## 更新紀錄
+- 新增題目選單
+- 新增題目線上更新功能
+
 ---
-2020/05/12 劉子豪
+2020/07/04 劉子豪
