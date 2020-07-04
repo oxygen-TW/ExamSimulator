@@ -4,7 +4,7 @@
     "id": "0770012",
     "server": "http://127.0.0.1:5000",
     "update": "https://home.oxygentw.net/rtt",
-    "version": "3.0",
+    "version": "0.1",
     "debug": 10,
     "LastOption": "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u672b\u8dd1\u53f0",
     "questions": {
