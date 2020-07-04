@@ -39,7 +39,7 @@ class ConfigProcesser():
             return ""
 
         self.__read()
-        return self.config["QuestionRoot"] + self.config["LastDir"]
+        return os.path.join(self.config["QuestionRoot"],self.config["LastDir"])
     
     def checkConfigFlie(self):
         if(path.isfile(self.configFile)):
@@ -67,23 +67,31 @@ class ConfigProcesser():
         self.config["LastOption"] = LastOption
         self.__write()
 
+    def getUpdateServer(self):
+        self.__read()
+        return self.config["update"]
+
+    def getVersion(self):
+        self.__read()
+        return self.config["version"]
+
 class ZipProcess():
 
     def __init__(self):
         fpc = FilePackageController()
         self.ProgramFolder = fpc.ProgramFolderPath()
 
-    def UnzipPackage(self, src):
+    def UnzipPackage(self, src, dest):
         with ZipFile(src, mode='r') as z:
             #zipName = "{0}/{1}".format(self.ProgramFolder, ((ZipInfo(src).filename.replace(".zip","")).split("\\")).split("/"))
             logging.debug(((ZipInfo(src).filename.replace(".zip",""))))
-            exit(0)
+            #exit(0)
             """if(os.path.isdir(zipName)):
                 logging.debug("目錄已存在")
                 return ""
             """
-            z.extractall(self.ProgramFolder)
-            return zipName
+            z.extractall(dest)
+            #return zipName
 
 class FilePackageController():
 

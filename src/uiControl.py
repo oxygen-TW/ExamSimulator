@@ -19,6 +19,7 @@ import logging
 
 from question import *
 from tools import *
+from updater import *
 from certificate import *
 
 logging.basicConfig(level=logging.DEBUG,
@@ -67,15 +68,6 @@ class Viewer(Frame):
         self.num_page_ans.set("****")
         self.num_page_tv.set("Slide: " + self.qc.getNo())
 
-    def OpenPackage(self):
-        _dir = filedialog.askopenfilename(initialdir = "",title = "select file",filetypes = [("zip file", "*.zip")])
-        zp = ZipProcess()
-        unzipDir = zp.UnzipPackage(_dir)
-
-        self.qc.load(unzipDir)
-        self.cp.writeLastDir(unzipDir)
-        self.open()
-
     def showAns(self):
         self.num_page_ans.set(self.qc.getAns())
 
@@ -107,10 +99,16 @@ class Viewer(Frame):
         self.fpc = FilePackageController()
         self.qc = QuestionController()
         self.cp = ConfigProcesser("config.json")
+        self.ud = Updater()
         self.QuestionInfo = self.cp.getQuestionInfo()
         self.isLastDirExsit = False
         
-        
+        #更新題目
+        if(self.ud.CheckVersion()):
+            messagebox.showinfo("題目更新", "程式題目更新中，請稍候\n拜託不要關閉視窗，會出事！")
+            if(not(self.ud.update())):
+                messagebox.showerror("更新失敗", "程式題目更新失敗")
+
         Frame.__init__(self, master)
 
         logging.debug(self.cp.readLastDir())

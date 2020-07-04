@@ -1,6 +1,7 @@
 import logging
 import toml
 import random
+import os
 
 logging.basicConfig(level=logging.WARNING,
                     format='%(asctime)s %(levelname)s %(message)s',
@@ -18,7 +19,7 @@ class QuestionController():
         self.dir = _dir
         logging.debug("change dir to " + _dir)
 
-        self.config = toml.load(_dir+"/config.toml")
+        self.config = toml.load(os.path.join(_dir,"config.toml"))
         self.title = self.config["title"]
         self.answer = self.config["answer"]
         self.total = len(self.answer)
