@@ -18,6 +18,8 @@ verify_ssl = true
 Pillow = "*"
 PyInstaller = "*"
 toml = "*"
+pycryptodome = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
@@ -56,5 +58,9 @@ title = "此題目包的名稱"
 
 8. 完成！
 
+## 更新紀錄
+- 新增題目選單
+- 新增題目線上更新功能
+
 ---
-2020/05/12 劉子豪
+2020/07/04 劉子豪
