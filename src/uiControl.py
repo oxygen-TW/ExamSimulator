@@ -94,6 +94,9 @@ class Viewer(Frame):
             self.changeMode()
             self.open()
 
+    def ShowAbout(self):
+        messagebox.showinfo("關於 | About", self.cp.getAbout())
+
     def __init__(self, master=None):
         #建立資料處理器
         self.fpc = FilePackageController()
@@ -134,6 +137,7 @@ class Viewer(Frame):
         Label(fram, textvariable=self.num_page_tv).pack(side=LEFT)
         Button(fram, text="Show answer", command=self.showAns).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
+        Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
         OptionMenu(fram, self.MenuOption, *OptionList).pack(side=RIGHT)
         self.MenuOption.trace("w", self.changeMenuOption)
         #Button(fram, text="Open Package", command=self.OpenPackage).pack(side=RIGHT)

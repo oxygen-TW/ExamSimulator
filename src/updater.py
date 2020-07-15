@@ -1,11 +1,13 @@
-import logging
 import os
 import requests
 import shutil
 
+from requests.exceptions import HTTPError
+
 from tools import ConfigProcesser
 from tools import ZipProcess
 
+import logging
 logging.basicConfig(level=logging.ERROR,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
@@ -27,7 +29,7 @@ class Updater():
                         logging.error("Download File failed.")
                         return False
                 else:
-                    logging.warning("Version lastest")
+                    logging.warning("Version is the lastest")
                     return False
             else:
                 logging.error("Server test failed")
@@ -50,7 +52,13 @@ class Updater():
             return False
 
     def ServerTest(self):
-        r = requests.get(self.ServerVersionURL)
+        r = object
+        try:
+            r = requests.get(self.ServerVersionURL, timeout=5)
+        except requests.exceptions.RequestException as identifier:
+            logging.critical(identifier)
+            return False
+        
         if(r.status_code == 200):
             return True
         else:

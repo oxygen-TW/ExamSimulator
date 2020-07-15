@@ -75,6 +75,10 @@ class ConfigProcesser():
         self.__read()
         return self.config["version"]
 
+    def getAbout(self):
+        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}".format(self.getVersion())
+        return _about
+        
 class ZipProcess():
 
     def __init__(self):
