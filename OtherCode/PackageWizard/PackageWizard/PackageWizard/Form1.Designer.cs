@@ -43,6 +43,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.FileImportLable.Font = new System.Drawing.Font("微軟正黑體", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.FileImportLable.Location = new System.Drawing.Point(33, 82);
             this.FileImportLable.Name = "FileImportLable";
-            this.FileImportLable.Size = new System.Drawing.Size(800, 600);
+            this.FileImportLable.Size = new System.Drawing.Size(291, 609);
             this.FileImportLable.TabIndex = 0;
             this.FileImportLable.Text = "將圖片拖拉至此";
             this.FileImportLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -159,11 +160,21 @@
             this.saveFileDialog1.DefaultExt = "zip";
             this.saveFileDialog1.Filter = "|Zip file|*.zip|";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(406, 82);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 94);
+            this.listBox1.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 753);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.WriteBtn);
             this.Controls.Add(this.AnswerTB);
@@ -195,6 +206,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

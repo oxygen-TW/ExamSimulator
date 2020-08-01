@@ -13,6 +13,7 @@ import PIL.Image
 from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
+from tkinter.ttk import Progressbar
 import PIL.ImageTk
 from PIL import Image
 import logging
@@ -28,11 +29,6 @@ logging.basicConfig(level=logging.DEBUG,
 
 class Viewer(Frame):
     def resize(self, w, h, w_box, h_box, pil_image):  
-        ''' 
-        resize a pil_image object so it will fit into 
-        a box of size w_box times h_box, but retain aspect ratio 
-        对一个pil_image对象进行缩放，让它在一个矩形框内，还能保持比例 
-        '''  
         f1 = 1.0*w_box/w # 1.0 forces float division in Python2  
         f2 = 1.0*h_box/h  
         factor = min([f1, f2])  
@@ -68,6 +64,17 @@ class Viewer(Frame):
         self.num_page_ans.set("****")
         self.num_page_tv.set("Slide: " + self.qc.getNo())
 
+    def back(self):
+        logging.debug(str(self.chkValue.get()))
+        if(self.chkValue.get() == True):
+            self.qc.randomBack()
+        else:
+            self.qc.back()
+        self.im = PIL.Image.open(self.qc.getImage())
+        self.chg_image()
+        self.num_page_ans.set("****")
+        self.num_page_tv.set("Slide: " + self.qc.getNo())
+
     def showAns(self):
         self.num_page_ans.set(self.qc.getAns())
 
@@ -97,6 +104,9 @@ class Viewer(Frame):
     def ShowAbout(self):
         messagebox.showinfo("關於 | About", self.cp.getAbout())
 
+    def progress(self, currentValue):
+        self.progressbar["value"]=currentValue
+
     def __init__(self, master=None):
         #建立資料處理器
         self.fpc = FilePackageController()
@@ -105,12 +115,15 @@ class Viewer(Frame):
         self.ud = Updater()
         self.QuestionInfo = self.cp.getQuestionInfo()
         self.isLastDirExsit = False
-        
+
         #更新題目
         if(self.ud.CheckVersion()):
             messagebox.showinfo("題目更新", "程式題目更新中，請稍候\n拜託不要關閉視窗，會出事！")
+            
             if(not(self.ud.update())):
                 messagebox.showerror("更新失敗", "程式題目更新失敗")
+            else:
+                messagebox.showinfo("Finish!", "更新完成！")
 
         Frame.__init__(self, master)
 
@@ -133,8 +146,9 @@ class Viewer(Frame):
         self.MenuOption.set(self.cp.getLastQuestionOption())
 
         fram = Frame(self)
-        Button(fram, text="Next slide", command=self.open).pack(side=LEFT)
+        Button(fram, text="Back", command=self.back).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_tv).pack(side=LEFT)
+        Button(fram, text="Next", command=self.open).pack(side=LEFT)
         Button(fram, text="Show answer", command=self.showAns).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)

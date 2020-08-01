@@ -14,6 +14,7 @@ class QuestionController():
         self.title = ""
         self.total = 0
         self.current = 0
+        self.Qstack = []
 
     def load(self, _dir):
         self.dir = _dir
@@ -32,6 +33,13 @@ class QuestionController():
 
     def randomNext(self):
         self.current = random.randint(1, self.total)
+        self.Qstack.append(self.current)
+
+    def randomBack(self):
+        if(len(self.Qstack) < 1):
+            return self.current
+        self.Qstack.pop()
+        self.current = self.Qstack[-1]
     
     def back(self):
         if(self.current - 1 == 0):

@@ -83,19 +83,21 @@ namespace PackageWizard
 
             };
 
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            /*if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 FolderPath = folderBrowserDialog1.SelectedPath;
                 Console.Write(FolderPath);
                 PathtoolStripLabel.Text = FolderPath;
-            }
+            }*/
 
             // Determine whether the directory exists.
-            if (!Directory.Exists(FolderPath))
+            /*if (!Directory.Exists(FolderPath))
             {
                 Console.WriteLine("That path not exists.");
                 Application.Exit();
-            }
+            }*/
+
+            listBox1.Items.Add("123.JPG");
         }
     
 
