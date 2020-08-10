@@ -21,7 +21,6 @@ import logging
 from question import *
 from tools import *
 from updater import *
-from certificate import *
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',

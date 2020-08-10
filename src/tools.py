@@ -1,5 +1,5 @@
 import json
-from zipfile import ZipFile, ZIP_DEFLATED, ZipInfo
+from zipfile import ZipFile, ZipInfo
 import logging
 import os
 from os import path
