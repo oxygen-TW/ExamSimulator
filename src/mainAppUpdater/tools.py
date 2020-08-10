@@ -10,6 +10,42 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
+class FilePackageController():
+
+    def __init__(self):
+        self.ProgramFolder = str(Path.home()) + "\RunTablePractice"
+        logging.debug(self.ProgramFolder)
+
+    def __ProgramFolderExsit(self):
+        if(path.isdir(self.ProgramFolder)):
+            return True
+        else:
+            return False
+    
+    def ProgramFolderPath(self):
+        if(self.__ProgramFolderExsit()):
+            return self.ProgramFolder
+        else:
+            try:
+                os.mkdir(self.ProgramFolder)
+            except OSError:
+               logging.error("程式資料夾創建失敗")
+            else:
+                logging.info("新建程式資料夾")
+            return self.ProgramFolder
+
+    def DeleteProgramFolder(self):
+        if(not(self.__ProgramFolderExsit())):
+            return True
+        else:
+            try:
+                os.rmdir(self.ProgramFolder)
+            except OSError:
+               logging.error("程式資料夾創建失敗")
+               return False
+            else:
+                logging.info("新建程式資料夾")
+            return True
         
 class ZipProcess():
 
