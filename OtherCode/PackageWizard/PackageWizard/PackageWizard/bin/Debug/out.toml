@@ -1,6 +1,0 @@
-title = "TOML Example"
-
-[answer]
-1 = "Ans1"
-2 = "Ans2"
-3 = "Ans3"
