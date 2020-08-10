@@ -100,7 +100,7 @@ class ZipProcess():
 class FilePackageController():
 
     def __init__(self):
-        self.ProgramFolder = str(Path.home()) + "\RunTablePractice"
+        self.ProgramFolder = str(Path.home()).join("RunTablePractice")
         logging.debug(self.ProgramFolder)
 
     def __ProgramFolderExsit(self):
