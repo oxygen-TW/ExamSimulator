@@ -1,6 +1,6 @@
 Get-ChildItem *.jpg | ForEach-Object -Begin {
-  $count = 1
+  $count = 407
 } -Process {
-  Rename-Item $_ -NewName ""
+  Rename-Item $_ -NewName "$count.jpg"
   $count++
 }
