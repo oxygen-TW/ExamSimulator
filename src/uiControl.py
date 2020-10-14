@@ -52,7 +52,7 @@ class Viewer(Frame):
         self.la.config(image=self.img, bg="#000000",
                        width=self.img.width(), height=self.img.height())
 
-    def open(self):
+    def next(self):
         logging.debug(str(self.chkValue.get()))
         if(self.chkValue.get() == True):
             self.qc.randomNext()
@@ -60,7 +60,12 @@ class Viewer(Frame):
             self.qc.next()
         self.im = PIL.Image.open(self.qc.getImage())
         self.chg_image()
+
         self.num_page_ans.set("****")
+        #練習模式直接顯示答案
+        if(self.practiceMode.get() == True):
+            self.showAns()
+
         self.num_page_tv.set("Slide: " + self.qc.getNo())
 
     def back(self):
@@ -72,6 +77,10 @@ class Viewer(Frame):
         self.im = PIL.Image.open(self.qc.getImage())
         self.chg_image()
         self.num_page_ans.set("****")
+        #練習模式直接顯示答案
+        if(self.practiceMode.get() == True):
+            self.showAns()
+
         self.num_page_tv.set("Slide: " + self.qc.getNo())
 
     def showAns(self):
@@ -139,6 +148,8 @@ class Viewer(Frame):
         self.num_page = 0
         self.num_page_tv = StringVar()
         self.num_page_ans = StringVar()
+        self.practiceMode = BooleanVar() 
+        self.practiceMode.set(False)
         self.chkValue = BooleanVar() 
         self.chkValue.set(False)
         self.MenuOption = StringVar()
@@ -147,7 +158,7 @@ class Viewer(Frame):
         fram = Frame(self)
         Button(fram, text="Back", command=self.back).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_tv).pack(side=LEFT)
-        Button(fram, text="Next", command=self.open).pack(side=LEFT)
+        Button(fram, text="Next", command=self.next).pack(side=LEFT)
         Button(fram, text="Show answer", command=self.showAns).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
@@ -155,13 +166,13 @@ class Viewer(Frame):
         self.MenuOption.trace("w", self.changeMenuOption)
         #Button(fram, text="Open Package", command=self.OpenPackage).pack(side=RIGHT)
         Checkbutton(fram, text='是否隨機', var=self.chkValue, command=self.changeMode).pack(side=RIGHT)
+        Checkbutton(fram, text='練習模式', var=self.practiceMode, command=self.changeMode).pack(side=RIGHT)
         fram.pack(side=TOP, fill=BOTH)
         
-
         self.la = Label(self)
         self.la.pack()
 
         self.pack()
         #載入第一張照片
         if(self.isLastDirExsit):
-            self.open()
+            self.next()

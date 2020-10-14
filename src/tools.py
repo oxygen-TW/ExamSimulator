@@ -6,7 +6,7 @@ from os import path
 from pathlib import Path
 #from certificate import *
 
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
@@ -76,7 +76,7 @@ class ConfigProcesser():
         return self.config["version"]
 
     def getAbout(self):
-        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}".format(self.getVersion())
+        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}\n軟體版本:2.3".format(self.getVersion())
         return _about
         
 class ZipProcess():
