@@ -6,12 +6,6 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-Pillow = "*"
-PyInstaller = "*"
-toml = "*"
-pycryptodome = "*"
-flask = "*"
-requests = "*"
 
 [requires]
 python_version = "3.8"

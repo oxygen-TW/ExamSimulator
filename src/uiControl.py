@@ -38,7 +38,6 @@ class Viewer(Frame):
         return pil_image.resize((width, height), Image.ANTIALIAS) 
 
     def chg_image(self):
-        
         if self.im.mode == "1":
             self.img = PIL.ImageTk.BitmapImage(self.im, foreground="white")
         else:
@@ -107,7 +106,7 @@ class Viewer(Frame):
             #手動變更隨機選項，使其變成循序模式
             self.chkValue.set(False)
             self.changeMode()
-            self.open()
+            self.next()
 
     def ShowAbout(self):
         messagebox.showinfo("關於 | About", self.cp.getAbout())
