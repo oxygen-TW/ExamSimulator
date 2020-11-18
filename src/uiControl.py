@@ -163,6 +163,8 @@ class Viewer(Frame):
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
         OptionMenu(fram, self.MenuOption, *OptionList).pack(side=RIGHT)
+        ToolBar = Menu(fram)
+        
         self.MenuOption.trace("w", self.changeMenuOption)
         #Button(fram, text="Open Package", command=self.OpenPackage).pack(side=RIGHT)
         Checkbutton(fram, text='是否隨機', var=self.chkValue, command=self.changeMode).pack(side=RIGHT)

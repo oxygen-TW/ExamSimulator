@@ -39,7 +39,7 @@ class ConfigProcesser():
             return ""
 
         self.__read()
-        return os.path.join(self.config["QuestionRoot"],self.config["LastDir"])
+        return os.path.join(self.config["QuestionRoot"],"hematology-whitebloodcell")
     
     def checkConfigFlie(self):
         if(path.isfile(self.configFile)):
