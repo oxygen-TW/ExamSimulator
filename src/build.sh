@@ -12,4 +12,4 @@ else
     pyinstaller -F -w viewer.py question.py tools.py --hidden-import=toml --hidden-import=PIL --hidden-import=tkinter --hidden-import='PIL._tkinter_finder'
 fi
 
-#cp config.json dist
+cp config.json dist
