@@ -21,6 +21,7 @@ import logging
 from question import *
 from tools import *
 from updater import *
+from embeddedServer import *
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',
@@ -112,7 +113,8 @@ class Viewer(Frame):
         messagebox.showinfo("關於 | About", self.cp.getAbout())
 
     def progress(self, currentValue):
-        self.progressbar["value"]=currentValue
+        #self.progressbar["value"]=currentValue
+        pass
 
     def __init__(self, master=None):
         #建立資料處理器
@@ -122,6 +124,8 @@ class Viewer(Frame):
         self.ud = Updater()
         self.QuestionInfo = self.cp.getQuestionInfo()
         self.isLastDirExsit = False
+
+        #self.es.start()
 
         #更新題目
         if(self.ud.CheckVersion()):
@@ -162,8 +166,7 @@ class Viewer(Frame):
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
         OptionMenu(fram, self.MenuOption, *OptionList).pack(side=RIGHT)
-        ToolBar = Menu(fram)
-        
+
         self.MenuOption.trace("w", self.changeMenuOption)
         #Button(fram, text="Open Package", command=self.OpenPackage).pack(side=RIGHT)
         Checkbutton(fram, text='是否隨機', var=self.chkValue, command=self.changeMode).pack(side=RIGHT)
