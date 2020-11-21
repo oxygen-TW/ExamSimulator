@@ -1,3 +1,4 @@
+@echo off
 pipenv install --skip-lock
 IF "%1"=="dev" GOTO dev
 
@@ -13,3 +14,4 @@ GOTO End
 
 :End
 copy config.json dist
+copy assests\icon.ico dist

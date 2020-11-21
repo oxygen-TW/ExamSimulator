@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ExamSimulator"
-!define PRODUCT_VERSION "2.3"
+!define PRODUCT_VERSION "2.4"
 !define PRODUCT_PUBLISHER "Liu, Tzu-Hao"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\viewer.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -64,6 +64,7 @@ Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
   File "dist\viewer.exe"
+  File "dist\icon.ico"
   File "dist\config.json"
   SetOutPath "$INSTDIR\Questions\hematology-whitebloodcell"
   SetOverwrite try
@@ -662,6 +663,7 @@ Section "MainSection" SEC01
   File "dist\Questions\Parasitology-snail\config.toml"
 
 ; Shortcuts
+  SetOutPath $INSTDIR
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
   CreateDirectory "$SMPROGRAMS\$ICONS_GROUP"
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\ExamSimulator.lnk" "$INSTDIR\viewer.exe"
@@ -689,12 +691,12 @@ SectionEnd
 
 Function un.onUninstSuccess
   HideWindow
-  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) ¤w¦¨¥\¦a±q§Aªº¹q¸£²¾°£¡C"
+  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) ï¿½wï¿½ï¿½ï¿½\ï¿½aï¿½qï¿½Aï¿½ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½C"
 FunctionEnd
 
 Function un.onInit
 !insertmacro MUI_UNGETLANGUAGE
-  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "§A½T©w­n§¹¥þ²¾°£ $(^Name) ¡A¨ä¤Î©Ò¦³ªº¤¸¥ó¡H" IDYES +2
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "ï¿½Aï¿½Tï¿½wï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ $(^Name) ï¿½Aï¿½ï¿½Î©Ò¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½H" IDYES +2
   Abort
 FunctionEnd
 

@@ -159,6 +159,8 @@ class Viewer(Frame):
         self.MenuOption.set(self.cp.getLastQuestionOption())
 
         fram = Frame(self)
+        self.master.iconbitmap("icon.ico")
+
         Button(fram, text="Back", command=self.back).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_tv).pack(side=LEFT)
         Button(fram, text="Next", command=self.next).pack(side=LEFT)
