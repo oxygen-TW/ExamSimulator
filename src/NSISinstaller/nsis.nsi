@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ExamSimulator"
-!define PRODUCT_VERSION "2.3"
+!define PRODUCT_VERSION "2.4.1"
 !define PRODUCT_PUBLISHER "Liu, Tzu-Hao"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\viewer.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"

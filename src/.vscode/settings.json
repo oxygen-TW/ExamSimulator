@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\oxygen\\.virtualenvs\\EncryptedNotepad-Python-cRHsC8fH\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\oxygen\\.virtualenvs\\src-JNkArKaN\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }

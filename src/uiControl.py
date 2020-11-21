@@ -123,6 +123,7 @@ class Viewer(Frame):
         self.cp = ConfigProcesser("config.json")
         self.ud = Updater()
         self.QuestionInfo = self.cp.getQuestionInfo()
+        #print(self.QuestionInfo)
         self.isLastDirExsit = False
 
         #self.es.start()
@@ -138,7 +139,7 @@ class Viewer(Frame):
 
         Frame.__init__(self, master)
 
-        logging.debug(self.cp.readLastDir())
+        print(self.cp.readLastDir())
         if(self.cp.readLastDir() != ""):
             self.qc.load(self.cp.readLastDir())
             self.master.title(self.qc.getTitle())
@@ -167,7 +168,7 @@ class Viewer(Frame):
         Button(fram, text="Show answer", command=self.showAns).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
-        OptionMenu(fram, self.MenuOption, *OptionList).pack(side=RIGHT)
+        OptionMenu(fram, self.MenuOption, *OptionList, command=self.changeMenuOption).pack(side=RIGHT)
 
         self.MenuOption.trace("w", self.changeMenuOption)
         #Button(fram, text="Open Package", command=self.OpenPackage).pack(side=RIGHT)

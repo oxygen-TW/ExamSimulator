@@ -39,7 +39,7 @@ class ConfigProcesser():
             return ""
 
         self.__read()
-        return os.path.join(self.config["QuestionRoot"],"hematology-whitebloodcell")
+        return os.path.join(self.config["QuestionRoot"],self.config["LastDir"])
     
     def checkConfigFlie(self):
         if(path.isfile(self.configFile)):
@@ -76,7 +76,7 @@ class ConfigProcesser():
         return self.config["version"]
 
     def getAbout(self):
-        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}\n軟體版本:2.3".format(self.getVersion())
+        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}\n軟體版本:2.4.1".format(self.getVersion())
         return _about
         
 class ZipProcess():
