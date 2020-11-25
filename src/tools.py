@@ -30,6 +30,9 @@ class ConfigProcesser():
         fp.close()
         self.config = json.loads(text)
 
+    def reload(self):
+        self.__read()
+        
     def writeLastDir(self, _dir):
         self.config["LastDir"] = _dir
         self.__write()    
@@ -78,6 +81,10 @@ class ConfigProcesser():
     def getAbout(self):
         _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}\n軟體版本:2.4.1".format(self.getVersion())
         return _about
+    
+    def addPackage(self, name, dirName):
+        self.config["questions"].update({name: dirName})
+        self.__write()
         
 class ZipProcess():
 

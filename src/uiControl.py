@@ -13,6 +13,7 @@ import PIL.Image
 from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
+from tkinter import filedialog
 from tkinter.ttk import Progressbar
 import PIL.ImageTk
 from PIL import Image
@@ -22,6 +23,7 @@ from question import *
 from tools import *
 from updater import *
 from embeddedServer import *
+from packageTools import packageTool
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',
@@ -90,7 +92,33 @@ class Viewer(Frame):
         self.qc.setCurrentNo(0)
 
     def changeMenuOption(self, *args):
-        #print(self.QuestionInfo[self.MenuOption.get()])
+        #TODO
+        if(self.MenuOption.get() == "匯入題目"):
+            folder = filedialog.askdirectory()
+            #如果取消、不做任何事
+            if(folder == ""):
+                self.MenuOption.set(self.cp.getLastQuestionOption())
+                return False
+            pt = packageTool()
+            #檢查題目包是否合法
+            r = pt.checkDirFormat(folder)
+            if(r != 0):
+                messagebox.showerror("Error", "Error code: "+str(r))
+                return False
+            
+            #複製題目包
+            if(pt.copyPackage(folder)):
+                messagebox.showinfo("OK", "匯入成功，請重新開啟軟體 Code="+str(r))
+            #Config update
+            self.cp.addPackage(pt.title, pt.packageDir)
+
+            #回復題目選單
+            #self.cp.reload()
+            self.MenuOption.set(self.cp.getLastQuestionOption())
+            print(self.cp.getLastQuestionOption())
+            return True
+            
+
         self.cp.writeLastDir(self.QuestionInfo[self.MenuOption.get()])
         self.cp.WriteLastQuestionOption(self.MenuOption.get())
         logging.debug(self.cp.readLastDir())
@@ -149,6 +177,8 @@ class Viewer(Frame):
         
         #讀取題目資訊給題目選單
         OptionList = list(self.QuestionInfo.keys())
+        OptionList.append("匯入題目")
+
         self.num_page = 0
         self.num_page_tv = StringVar()
         self.num_page_ans = StringVar()
@@ -171,7 +201,7 @@ class Viewer(Frame):
         OptionMenu(fram, self.MenuOption, *OptionList, command=self.changeMenuOption).pack(side=RIGHT)
 
         self.MenuOption.trace("w", self.changeMenuOption)
-        #Button(fram, text="Open Package", command=self.OpenPackage).pack(side=RIGHT)
+        #Button(fram, text="Open Package").pack(side=RIGHT)
         Checkbutton(fram, text='是否隨機', var=self.chkValue, command=self.changeMode).pack(side=RIGHT)
         Checkbutton(fram, text='練習模式', var=self.practiceMode, command=self.changeMode).pack(side=RIGHT)
         fram.pack(side=TOP, fill=BOTH)
