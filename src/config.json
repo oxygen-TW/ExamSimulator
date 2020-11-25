@@ -1,17 +1,1 @@
-{
-    "LastDir": "Parasitology-mid",
-    "QuestionRoot": "Questions",
-    "id": "",
-    "server": "http://127.0.0.1:5000",
-    "update": "https://web.oxygentw.net/ExamSimulator",
-    "version": "1.3",
-    "debug": 10,
-    "LastOption": "\u6e2c\u8a66",
-    "questions": {
-        "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u4e2d\u8dd1\u53f0": "Parasitology-mid",
-        "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u672b\u8dd1\u53f0": "Parasitology-final",
-        "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u8dd1\u53f0--\u8778\u725b\u985e": "Parasitology-snail",
-        "\u81e8\u5e8a\u8840\u6db2\u5b78\u767d\u8840\u7403\u5716\u8b5c": "hematology-whitebloodcell",
-        "\u81e8\u5e8a\u93e1\u6aa2\u5b78 \u5c3f\u6c89\u6e23": "opd-urinesediments"
-    }
-}
+{"LastDir": "Parasitology-mid", "QuestionRoot": "Questions", "id": "", "server": "http://127.0.0.1:5000", "update": "https://web.oxygentw.net/ExamSimulator", "version": "1.3", "debug": 10, "LastOption": "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u4e2d\u8dd1\u53f0", "questions": {"\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u4e2d\u8dd1\u53f0": "Parasitology-mid", "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u671f\u672b\u8dd1\u53f0": "Parasitology-final", "\u5bc4\u751f\u87f2\u5b78\u5be6\u9a57\u8dd1\u53f0--\u8778\u725b\u985e": "Parasitology-snail", "\u81e8\u5e8a\u8840\u6db2\u5b78\u767d\u8840\u7403\u5716\u8b5c": "hematology-whitebloodcell", "\u81e8\u5e8a\u93e1\u6aa2\u5b78 \u5c3f\u6c89\u6e23": "opd-urinesediments", "\u6e2c\u8a66": "test"}}

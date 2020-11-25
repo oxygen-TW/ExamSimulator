@@ -108,7 +108,7 @@ class Viewer(Frame):
             
             #複製題目包
             if(pt.copyPackage(folder)):
-                messagebox.showinfo("OK", "匯入成功，請重新開啟軟體 Code="+str(r))
+                messagebox.showinfo("OK", "匯入成功，軟體將關閉，請重新開啟軟體 Code="+str(r))
             #Config update
             self.cp.addPackage(pt.title, pt.packageDir)
 
@@ -116,8 +116,14 @@ class Viewer(Frame):
             #self.cp.reload()
             self.MenuOption.set(self.cp.getLastQuestionOption())
             print(self.cp.getLastQuestionOption())
+            self.quit()
             return True
             
+        if(self.MenuOption.get() == "移除題目"):
+            os.system(os.path.join(os.getcwd(), "removePackage.exe"))
+            self.MenuOption.set(self.cp.getLastQuestionOption())
+            self.quit()
+            return True
 
         self.cp.writeLastDir(self.QuestionInfo[self.MenuOption.get()])
         self.cp.WriteLastQuestionOption(self.MenuOption.get())
@@ -178,6 +184,7 @@ class Viewer(Frame):
         #讀取題目資訊給題目選單
         OptionList = list(self.QuestionInfo.keys())
         OptionList.append("匯入題目")
+        OptionList.append("移除題目")
 
         self.num_page = 0
         self.num_page_tv = StringVar()

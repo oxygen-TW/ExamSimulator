@@ -17,6 +17,7 @@ class ConfigProcesser():
         self.config = {
             "LastDir": ""
         }
+        self.__read()
 
     def __write(self):
         output = json.dumps(self.config)
@@ -84,6 +85,14 @@ class ConfigProcesser():
     
     def addPackage(self, name, dirName):
         self.config["questions"].update({name: dirName})
+        self.__write()
+    
+    def removePackage(self, name):
+        del self.config["questions"][name]
+        keys_list = list(self.config["questions"])
+        self.config["LastDir"] = self.config["questions"][keys_list[0]]
+        self.config["LastOption"] = keys_list[0]
+        #print(self.config["LastDir"])
         self.__write()
         
 class ZipProcess():
@@ -165,7 +174,7 @@ class Authorization():
 """
 
 if __name__ == "__main__":
-    #CP = ConfigProcesser("config.json")
-    #print(CP.getQuestionInfo())
+    CP = ConfigProcesser("config.json")
+    print(CP.removePackage("test"))
     
     pass
