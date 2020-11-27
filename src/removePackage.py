@@ -4,18 +4,24 @@ from tools import ConfigProcesser
 print("ExamSimulator Package Detete Tool")
 print("Programmer: Liu, Tzu-Hao Taiwan\n\n")
 
-name = input("請輸入你要刪除的題目包名稱(需一字不差!):  ")
-
-r = input("請確認題目包名稱是否正確 -> {} 是請輸入y 不是請輸入n : ".format(name))
-
-while(r.upper() != "Y"):
-    name = input("請重新輸入你要刪除的題目包名稱(需一字不差!):  ")
-    r = input("請確認題目包名稱是否正確 -> {} 是請輸入y 不是請輸入n : ".format(name))
-
 cp = ConfigProcesser("config.json")
 questions = cp.getQuestionInfo()
-folderName = questions[name]
+
+for i, item in enumerate(questions):
+    print("{}: {}".format(i, item))
+
+index = int(input("請輸入你要刪除的題目包編號(需一字不差!):  "))
+
+while(index < 0 or index > len(questions)-1):
+    for i, item in enumerate(questions):
+        print("{}: {}".format(i, item))
+
+    index = int(input("請輸入你要刪除的題目包編號(需一字不差!):  "))
+
+
+tmplist = list(questions)
+folderName = questions[tmplist[index]]
+name = tmplist[index]
 
 shutil.rmtree(os.path.join(os.getcwd(), os.path.join("Questions", folderName)))
-
 cp.removePackage(name)

@@ -2,8 +2,15 @@
 pipenv install --skip-lock
 IF "%1"=="dev" GOTO dev
 IF "%1"=="rmtool" GOTO rmtool
+IF "%1"=="viewer" GOTO viewer
+
 :Release
 echo Build command [Release]
+pyinstaller -F -w viewer.py .\question.py .\tools.py --hidden-import=toml --hidden-import=PIL --icon=assests/icon.ico
+GOTO rmtool
+
+:viewer
+echo Build command [Build viewer]
 pyinstaller -F -w viewer.py .\question.py .\tools.py --hidden-import=toml --hidden-import=PIL --icon=assests/icon.ico
 GOTO End
 

@@ -174,7 +174,4 @@ class Authorization():
 """
 
 if __name__ == "__main__":
-    CP = ConfigProcesser("config.json")
-    print(CP.removePackage("test"))
-    
     pass

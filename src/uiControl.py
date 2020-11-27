@@ -122,6 +122,8 @@ class Viewer(Frame):
         if(self.MenuOption.get() == "移除題目"):
             os.system(os.path.join(os.getcwd(), "removePackage.exe"))
             self.MenuOption.set(self.cp.getLastQuestionOption())
+
+            messagebox.showinfo("OK", "移除成功，軟體將關閉，請重新開啟軟體")
             self.quit()
             return True
 
