@@ -51,7 +51,7 @@ var ICONS_GROUP
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 OutFile "ExamSimulatoSetup.exe"
-InstallDir "$PROGRAMFILES\ExamSimulator"
+InstallDir "$PROFILE\ExamSimulator"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show

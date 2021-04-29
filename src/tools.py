@@ -80,7 +80,7 @@ class ConfigProcesser():
         return self.config["version"]
 
     def getAbout(self):
-        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}\n軟體版本:2.4.1".format(self.getVersion())
+        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}\n軟體版本:2.5.2".format(self.getVersion())
         return _about
     
     def addPackage(self, name, dirName):

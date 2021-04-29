@@ -22,6 +22,7 @@ class packageTool():
         #check TOML
         try:
             data = toml.load(self.configPath)
+            print(data)
         except TomlDecodeError:
             return 3
         except TypeError:
@@ -30,7 +31,8 @@ class packageTool():
         try:
             self.title = data["title"]
             ans = data["answer"]
-        except Exception:
+        except Exception as e:
+            print(e)
             return 5
         
         self.AnsCount = len(ans)

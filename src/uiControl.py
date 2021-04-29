@@ -54,7 +54,7 @@ class Viewer(Frame):
         self.la.config(image=self.img, bg="#000000",
                        width=self.img.width(), height=self.img.height())
 
-    def next(self):
+    def next(self, _event=None):
         logging.debug(str(self.chkValue.get()))
         if(self.chkValue.get() == True):
             self.qc.randomNext()
@@ -70,7 +70,7 @@ class Viewer(Frame):
 
         self.num_page_tv.set("Slide: " + self.qc.getNo())
 
-    def back(self):
+    def back(self, _event=None):
         logging.debug(str(self.chkValue.get()))
         if(self.chkValue.get() == True):
             self.qc.randomBack()
@@ -186,7 +186,7 @@ class Viewer(Frame):
         #讀取題目資訊給題目選單
         OptionList = list(self.QuestionInfo.keys())
         OptionList.append("匯入題目")
-        OptionList.append("移除題目")
+        OptionList.append("移除題目(測試中 不要用)")
 
         self.num_page = 0
         self.num_page_tv = StringVar()
@@ -201,9 +201,15 @@ class Viewer(Frame):
         fram = Frame(self)
         self.master.iconbitmap("icon.ico")
 
-        Button(fram, text="Back", command=self.back).pack(side=LEFT)
+        BackBtn = Button(fram, text="Back", command=self.back)
+        BackBtn.pack(side=LEFT)
+        fram.bind('<Left>',self.back) #綁定鍵盤動作
+
         Label(fram, textvariable=self.num_page_tv).pack(side=LEFT)
-        Button(fram, text="Next", command=self.next).pack(side=LEFT)
+        NextBtn = Button(fram, text="Next", command=self.next)
+        NextBtn.pack(side=LEFT)
+        fram.bind("<Right>", self.next)#綁定鍵盤動作
+
         Button(fram, text="Show answer", command=self.showAns).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
@@ -213,11 +219,13 @@ class Viewer(Frame):
         #Button(fram, text="Open Package").pack(side=RIGHT)
         Checkbutton(fram, text='是否隨機', var=self.chkValue, command=self.changeMode).pack(side=RIGHT)
         Checkbutton(fram, text='練習模式', var=self.practiceMode, command=self.changeMode).pack(side=RIGHT)
+        fram.focus_set()
         fram.pack(side=TOP, fill=BOTH)
         
         self.la = Label(self)
         self.la.pack()
 
+        
         self.pack()
         #載入第一張照片
         if(self.isLastDirExsit):
