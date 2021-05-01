@@ -6,7 +6,7 @@ print("Programmer: Liu, Tzu-Hao Taiwan\n\n")
 
 cp = ConfigProcesser("config.json")
 questions = cp.getQuestionInfo()
-
+print(questions)
 for i, item in enumerate(questions):
     print("{}: {}".format(i, item))
 
@@ -16,7 +16,10 @@ while(index < 0 or index > len(questions)-1):
     for i, item in enumerate(questions):
         print("{}: {}".format(i, item))
 
-    index = int(input("請輸入你要刪除的題目包編號(需一字不差!):  "))
+    try:
+        index = int(input("請輸入你要刪除的題目包編號(需一字不差!):  "))
+    except KeyboardInterrupt:
+        print("Remove tool aborted by user.")
 
 
 tmplist = list(questions)

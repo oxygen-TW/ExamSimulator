@@ -6,12 +6,13 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-Pillow = "*"
+Pillow = ">=8.1.2"
 PyInstaller = "*"
 toml = "*"
 pycryptodome = "*"
 flask = "*"
 requests = "*"
+jinja2 = ">=2.11.3"
 
 [requires]
 python_version = "3.9"

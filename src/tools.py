@@ -80,7 +80,7 @@ class ConfigProcesser():
         return self.config["version"]
 
     def getAbout(self):
-        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n題目包版本:{0}\n軟體版本:2.5.2".format(self.getVersion())
+        _about = "跑台練習程式 2020-\nAuthor: CSMU MT 107 劉子豪\n軟體版本:{0}".format(self.getVersion())
         return _about
     
     def addPackage(self, name, dirName):
@@ -94,6 +94,9 @@ class ConfigProcesser():
         self.config["LastOption"] = keys_list[0]
         #print(self.config["LastDir"])
         self.__write()
+    
+    def getHttpTimeOut(self):
+        return self.config["HttpTimeOut"]
         
 class ZipProcess():
 

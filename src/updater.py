@@ -54,7 +54,7 @@ class Updater():
     def ServerTest(self):
         r = object
         try:
-            r = requests.get(self.ServerVersionURL, timeout=3)
+            r = requests.get(self.ServerVersionURL, timeout=int(self.cp.getHttpTimeOut()))
         except requests.exceptions.RequestException as identifier:
             logging.critical(identifier)
             return False

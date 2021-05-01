@@ -85,7 +85,7 @@ class Viewer(Frame):
 
         self.num_page_tv.set("Slide: " + self.qc.getNo())
 
-    def showAns(self):
+    def showAns(self, _event=None):
         self.num_page_ans.set(self.qc.getAns())
 
     def changeMode(self):
@@ -93,7 +93,7 @@ class Viewer(Frame):
 
     def changeMenuOption(self, *args):
         #TODO
-        if(self.MenuOption.get() == "匯入題目"):
+        if(self.MenuOption.get() == "匯入題目包"):
             folder = filedialog.askdirectory()
             #如果取消、不做任何事
             if(folder == ""):
@@ -119,7 +119,7 @@ class Viewer(Frame):
             self.quit()
             return True
             
-        if(self.MenuOption.get() == "移除題目"):
+        if(self.MenuOption.get() == "移除題目包"):
             os.system(os.path.join(os.getcwd(), "removePackage.exe"))
             self.MenuOption.set(self.cp.getLastQuestionOption())
 
@@ -185,8 +185,8 @@ class Viewer(Frame):
         
         #讀取題目資訊給題目選單
         OptionList = list(self.QuestionInfo.keys())
-        OptionList.append("匯入題目")
-        OptionList.append("移除題目(測試中 不要用)")
+        OptionList.append("匯入題目包")
+        OptionList.append("移除題目包")
 
         self.num_page = 0
         self.num_page_tv = StringVar()
@@ -212,6 +212,8 @@ class Viewer(Frame):
 
         Button(fram, text="Show answer", command=self.showAns).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
+        fram.bind("<Down>", self.showAns)#綁定鍵盤動作
+
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
         OptionMenu(fram, self.MenuOption, *OptionList, command=self.changeMenuOption).pack(side=RIGHT)
 

@@ -25,6 +25,9 @@ pyinstaller -c -F removePackage.py
 copy dist/removePackage.exe .
 GOTO End
 
+:NSIS
+echo Build command [Compile NSIS Installer]
+
 :End
 copy config.json dist
 copy assests\icon.ico dist
