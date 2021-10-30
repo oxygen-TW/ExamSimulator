@@ -15,6 +15,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import filedialog
 from tkinter.ttk import Progressbar
+from tkinter import font
 import PIL.ImageTk
 from PIL import Image
 import logging
@@ -68,7 +69,7 @@ class Viewer(Frame):
         if(self.practiceMode.get() == True):
             self.showAns()
 
-        self.num_page_tv.set("Slide: " + self.qc.getNo())
+        self.num_page_tv.set("Image: " + self.qc.getNo())
 
     def back(self, _event=None):
         logging.debug(str(self.chkValue.get()))
@@ -90,6 +91,7 @@ class Viewer(Frame):
 
     def changeMode(self):
         self.qc.setCurrentNo(0)
+        self.next()
 
     def changeMenuOption(self, *args):
         #TODO
@@ -205,13 +207,14 @@ class Viewer(Frame):
         BackBtn.pack(side=LEFT)
         fram.bind('<Left>',self.back) #綁定鍵盤動作
 
-        Label(fram, textvariable=self.num_page_tv).pack(side=LEFT)
+        Label(fram, textvariable=self.num_page_tv, font=("Calibri", 12)).pack(side=LEFT)
+
         NextBtn = Button(fram, text="Next", command=self.next)
         NextBtn.pack(side=LEFT)
         fram.bind("<Right>", self.next)#綁定鍵盤動作
 
         Button(fram, text="Show answer", command=self.showAns).pack(side=LEFT)
-        Label(fram, textvariable=self.num_page_ans).pack(side=LEFT)
+        Label(fram, textvariable=self.num_page_ans, font=("Calibri", 12)).pack(side=LEFT)
         fram.bind("<Down>", self.showAns)#綁定鍵盤動作
 
         Button(fram, text="關於", command=self.ShowAbout).pack(side=RIGHT)
